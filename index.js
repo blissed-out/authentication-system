@@ -5,16 +5,18 @@ import cors from "cors"
 import db from "./utils/db.js"
 import cookieParser from "cookie-parser"
 
-dotenv.config();
+dotenv.config(); // .env file path
+
 
 const app = express();
+
 
 db(); // database connection
 
 const port = process.env.PORT || 4000;
 app.use(express.json()); // to convert the object to json, so we can read with req.body
 app.use(express.urlencoded({ extended: true })); // to convert objects, arrays to string
-app.use(cookieParser(process.env.COOKIE_SECRET_KEY));
+app.use(cookieParser(process.env.COOKIE_SECRET_KEY)); // accessing req.cookie
 
 
 app.use(cors({
